@@ -27,7 +27,7 @@ const propertiesToCheck = ["id", "todo", "completed", "userId"];
 test.describe("todo curd", async () => {
   test.use({ baseURL: "https://dummyjson.com" });
 
-  test.only("get all todo should give all todos", async ({ request }) => {
+  test("get all todo should give all todos", async ({ request }) => {
     const response = await request.get("/todos");
     expect(response.status()).toBe(200);
     expect.soft(response.statusText()).not.toBe("Error");
@@ -55,7 +55,7 @@ test.describe("todo curd", async () => {
     expect(res).toCheckObjResponse(expectedTypes);
   });
 
-  test.only("update todo", async ({ request }) => {
+  test("update todo", async ({ request }) => {
     const response = await request.put("todos/1", {
       data: {
         completed: true
